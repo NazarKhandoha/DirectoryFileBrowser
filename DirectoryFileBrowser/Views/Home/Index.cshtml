@@ -1,0 +1,33 @@
+﻿@{
+    ViewBag.Title = "Index";
+}
+<script src=" ~/Scripts/angular.js"></script>
+<script src="~/Scripts/angular-route.js"></script>  
+<script src="~/Scripts/app/FileModule.js"></script>
+<script src="~/Scripts/app/FileService.js"></script>
+<script src="~/Scripts/app/FileCountController.js"></script>
+<section>
+    <div class="main-content" style="height:auto;margin-top:100px" ng-controller="Filectr">
+        <table>
+            <thead>
+                <tr>
+                    <th>Less 10Mb</th>
+                    <th>10Mb - 50Mb</th>
+                    <th>More 100Mb</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>{{direct.Less10Mb}}</td>
+                    <td>{{direct.Between10Mb_50Mb}}</td>
+                    <td>{{direct.More100Mb}}</td>
+                </tr>
+            </tbody>
+        </table>
+        <p style="color:red;">{{direct.Error}}</p>
+        <a href ng-click="getBack()">{{direct.ParentDir}}</a>
+        <div ng-repeat="dir in direct.Trees">            
+            <a style="color:green" href ng-click="getNewDirect($index)">{{dir}}</a>
+        </div>
+    </div>   
+</section>
